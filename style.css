@@ -1,0 +1,425 @@
+/* Reset e base */
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f8fa;
+    color: #222;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+  a {
+    color: #006400;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover {
+    color: #004d00;
+  }
+  
+  /* Container geral */
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem 0;
+  }
+  
+  /* Header */
+  header {
+    background: #007400;
+    color: #fff;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    animation: slideDown 1s ease forwards;
+  }
+  header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header .logo {
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    user-select: none;
+    cursor: default;
+  }
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #0f0f0f;
+    font-size: larger;
+  }
+  nav ul li a {
+    position: relative;
+    padding-bottom: 4px;
+    color: #0f0f0f;
+  }
+  nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #7fff00;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease;
+  }
+  nav ul li a:hover::after {
+    width: 100%;
+  }
+
+  
+  /* Hero */
+  .hero {
+    height: 70vh;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/IFSP_Campus_Birigui_-_panorama.jpg/1200px-IFSP_Campus_Birigui_-_panorama.jpg') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 0 0 10px rgba(0,0,0,0.7);
+    text-align: center;
+    animation: fadeIn 2s ease forwards;
+    color: black;
+  }
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    animation: slideUp 1s ease 0.5s forwards;
+    opacity: 0;
+  }
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    animation: slideUp 1s ease 1s forwards;
+    opacity: 0;
+  }
+  
+  /* Section Sobre */
+  section.sobre {
+    background: white;
+    padding: 4rem 2rem;
+    margin-top: -4rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    animation: fadeInSlide 1.2s ease forwards;
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  section.sobre h2 {
+    color: #0f0f0f;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  section.sobre p {
+    font-size: 1.1rem;
+    max-width: 700px;
+    color: black;
+  }
+  
+  /* Cursos */
+  section.cursos {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 4rem auto;
+  }
+  section.cursos h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #004d00;
+    margin-bottom: 2rem;
+  }
+  .cards {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .card {
+    background: white;
+    width: 280px;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 15px 30px rgba(0,77,0,0.3);
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 6px;
+    top: 0;
+    left: -100%;
+    background: linear-gradient(90deg, #7fff00, #004d00);
+    transition: left 0.4s ease;
+    border-radius: 15px 15px 0 0;
+  }
+  .card:hover::before {
+    left: 0;
+  }
+  .card h3 {
+    margin-bottom: 1rem;
+    color: #006400;
+  }
+  .card p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.4;
+  }
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Centraliza os cards */
+  }
+  
+  .card {
+    flex: 1 1 22%; /* Faz os cards ocuparem cerca de 22% do container, com margem entre eles */
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    max-width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Contato */
+  section.contato {
+    background: #006400;
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 15px;
+    max-width: 600px;
+    margin: 0 auto 4rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    animation: fadeInSlideUp 1.3s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  section.contato h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  input, textarea {
+    padding: 0.8rem;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    resize: none;
+    transition: box-shadow 0.3s ease;
+  }
+  input:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 10px #7fff00;
+  }
+  textarea {
+    min-height: 100px;
+  }
+  button {
+    background: #7fff00;
+    color: #004d00;
+    border: none;
+    padding: 1rem;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 15px rgba(127,255,0,0.6);
+  }
+  button:hover {
+    background: #66cc00;
+    box-shadow: 0 6px 20px rgba(102,204,0,0.8);
+    color: #fff;
+  }
+  
+  /* Footer */
+  footer {
+    background: #006400;
+    color: #ccc;
+    text-align: center;
+    padding: 1.5rem 0;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    user-select: none;
+  }
+  
+  /* Animações */
+  @keyframes slideDown {
+    from {transform: translateY(-100%);}
+    to {transform: translateY(0);}
+  }
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fadeInSlide {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes fadeInSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .cards {
+      flex-direction: column;
+      align-items: center;
+    }
+    header .container {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    nav ul {
+      gap: 1rem;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+    }
+    .hero p {
+      font-size: 1.1rem;
+    }
+    section.sobre, section.contato {
+      padding: 3rem 1.5rem;
+      margin-top: 0;
+    }
+    section.cursos {
+      padding: 3rem 1rem;
+    }
+    .card {
+      width: 90%;
+    }
+  }
+  
+  .map-container {
+    margin: 2.5rem auto 0;
+    width: 100%;
+    max-width: 600px; /* largura máxima */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+  }
+  
+  .map-container iframe {
+    width: 100%;
+    height: 300px;
+    border: none;
+    filter: contrast(1.05) brightness(0.95);
+    transition: filter 0.3s ease;
+  }
+  
+  .map-container iframe:hover {
+    filter: contrast(1.1) brightness(1);
+  }
+  /* Fundo animado para o site todo */
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(-45deg, #c4eac0, #a6d7b4, #89c9a2, #b1e1cb);
+    background-size: 400% 400%;
+    animation: animacaoFundo 15s ease infinite;
+    background: #004d00;
+  }
+  
+  /* Animação suave */
+  @keyframes animacaoFundo {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  header {
+    background-color: white; /* Ou #ffffff, ou até um verde institucional se quiser */
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 10;
+  }
+  header {
+    background: #006400;
+    color: white;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(-45deg, #c4eac0, #a6d7b4, #89c9a2, #b1e1cb);
+    background-size: 400% 400%;
+    animation: animacaoDegrade 15s ease infinite;
+  }
+  
+  /* 🔄 Animação suave do fundo */
+  @keyframes animacaoDegrade {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
