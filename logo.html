@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Logo IF - Animação Intermitente + Fundo Animado</title>
+  <style>
+    body {
+      background: linear-gradient(180deg, #8fcf8f 0%, #5ea85e 70%, #c2e4c2 100%);
+      background-size: 100% 200%;
+      animation: backgroundMove 20s ease-in-out infinite;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      user-select: none;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes backgroundMove {
+      0% { background-position: 0% 0%; }
+      50% { background-position: 0% 100%; }
+      100% { background-position: 0% 0%; }
+    }
+
+    /* Engrenagens girando - 3 engrenagens espalhadas */
+
+    .bg-element {
+      position: absolute;
+      opacity: 0.15;
+      z-index: 0;
+      pointer-events: none;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    .bg-element img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .gear1 {
+      width: 120px;
+      height: 120px;
+      top: 15%;
+      left: 15%;
+      animation: spinClockwise 40s linear infinite;
+    }
+
+    .gear2 {
+      width: 90px;
+      height: 90px;
+      top: 65%;
+      left: 75%;
+      animation: spinCounterClockwise 35s linear infinite;
+      animation-delay: 10s;
+    }
+
+    .gear3 {
+      width: 100px;
+      height: 100px;
+      top: 40%;
+      left: 45%;
+      animation: spinClockwise 45s linear infinite;
+      animation-delay: 5s;
+    }
+
+    @keyframes spinClockwise {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+
+    @keyframes spinCounterClockwise {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(-360deg);}
+    }
+
+    /* Container para logo + texto com moldura animada */
+
+    .content-wrapper {
+        position: relative;
+        z-index: 1;
+        padding: 20px 30px;
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 16px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        animation: fadeInBorder 2s ease forwards;
+        border: 4px solid transparent;
+        background-clip: padding-box;
+      }
+      
+      /* Animação da borda */
+      @keyframes fadeInBorder {
+        0% {
+          border-color: transparent;
+          box-shadow: none;
+        }
+        100% {
+          border-color: #28a745;  /* verde harmonioso */
+          box-shadow: 0 0 20px #28a745;
+        }
+      }
+      
+
+    /* LOGO */
+
+    .container {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin-bottom: 10px;
+    }
+
+    /* Blocos verdes e bolinha vermelha */
+    .block, .dot {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border-radius: 4px;
+
+      left: calc((var(--x) - 1) * 55px);
+      top: calc((var(--y) - 1) * 55px);
+
+      /* animação drop inicial */
+      transform: translateY(-250px) rotate(-180deg);
+      opacity: 0;
+      animation: drop 1s ease-out forwards;
+      animation-delay: calc((var(--x) + var(--y)) * 0.15s);
+    }
+
+    .block {
+      background: #00aa44;
+    }
+
+    .dot {
+      background: #cc0000;
+      border-radius: 50%;
+      animation-delay: 0.1s;
+    }
+
+    @keyframes drop {
+      0% {
+        transform: translateY(-250px) rotate(-180deg);
+        opacity: 0;
+      }
+      70% {
+        transform: translateY(15px) rotate(10deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(0) rotate(0);
+        opacity: 1;
+      }
+    }
+
+    /* Texto abaixo da logo */
+    .text-container {
+      max-width: 600px;
+      width: 100%;
+      margin: 0 auto;
+      line-height: 1.4;
+      user-select: text;
+
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideUp 1s ease forwards;
+      animation-delay: 1.6s;
+
+      animation-fill-mode: forwards;
+    }
+
+    .text-container p {
+      margin: 4px 0;
+      font-weight: 700; /* um pouco mais gorda */
+      letter-spacing: 1.2px;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+    }
+
+    .text-container .line1 {
+      color: black;
+    }
+
+    .text-container .line2,
+    .text-container .line3 {
+      color: #00aa44;
+    }
+
+    /* Responsividade simples */
+    @media (max-width: 400px) {
+      .container {
+        width: 200px;
+        height: 200px;
+      }
+      .block, .dot {
+        width: 35px;
+        height: 35px;
+        left: calc((var(--x) - 1) * 38px);
+        top: calc((var(--y) - 1) * 38px);
+      }
+      .text-container p {
+        font-size: 0.9rem;
+        max-width: 90vw;
+      }
+      .text-container .line1 {
+        background: none;
+        color: black;
+        padding: 0;
+      }
+    }
+
+    @keyframes fadeSlideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Animações suaves pós entrada */
+
+    @keyframes pulseScaleBright {
+      0%, 85%, 100% {
+        transform: scale(1);
+        filter: brightness(1);
+      }
+      40% {
+        transform: scale(1.05);
+        filter: brightness(1.15);
+      }
+    }
+
+    @keyframes pulseTextLine {
+      0%, 85%, 100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      40% {
+        opacity: 0.85;
+        transform: translateY(-5px) scale(1.02);
+      }
+    }
+
+    .animate-logo {
+      animation: pulseScaleBright 8s ease-in-out infinite;
+      animation-delay: 0s;
+      z-index: 1;
+    }
+
+    /* Animação das linhas ocorre uma a uma em sequência */
+    .animate-text .line1 {
+      animation: pulseTextLine 8s ease-in-out infinite;
+      animation-delay: 0s;
+    }
+    .animate-text .line2 {
+      animation: pulseTextLine 8s ease-in-out infinite;
+      animation-delay: 2.66s; /* 8s / 3 ≈ 2.66s */
+    }
+    .animate-text .line3 {
+      animation: pulseTextLine 8s ease-in-out infinite;
+      animation-delay: 5.33s;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fundo animado com 3 engrenagens girando -->
+  <div class="bg-element gear1">
+    <img src="https://www.pngarts.com/files/1/Gear-PNG-High-Quality-Image.png" alt="Engrenagem 1" />
+  </div>
+  <div class="bg-element gear2">
+    <img src="https://www.pngarts.com/files/1/Gear-PNG-High-Quality-Image.png" alt="Engrenagem 2" />
+  </div>
+  <div class="bg-element gear3">
+    <img src="https://www.pngarts.com/files/1/Gear-PNG-High-Quality-Image.png" alt="Engrenagem 3" />
+  </div>
+
+  <div class="content-wrapper">
+    <div class="container" id="logo-container">
+      <!-- Bolinha vermelha - coluna 1, linha 1 -->
+      <div class="dot" style="--x:2.5; --y:2;"></div>
+
+      <!-- Coluna 1 - I -->
+      <div class="block" style="--x:2.5; --y:3;"></div>
+      <div class="block" style="--x:2.5; --y:4;"></div>
+      <div class="block" style="--x:2.5; --y:5;"></div>
+
+      <!-- Coluna 2 - perna do F -->
+      <div class="block" style="--x:3.5; --y:2;"></div>
+      <div class="block" style="--x:3.5; --y:3;"></div>
+      <div class="block" style="--x:3.5; --y:4;"></div>
+      <div class="block" style="--x:3.5; --y:5;"></div>
+
+      <!-- Coluna 3 - braços do F -->
+      <div class="block" style="--x:4.5; --y:2;"></div> <!-- braço superior -->
+      <div class="block" style="--x:4.5; --y:4;"></div> <!-- braço do meio -->
+    </div>
+
+    <div class="text-container animate-text" id="text-container">
+      <p class="line1">INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA</p>
+      <p class="line2">SÃO PAULO</p>
+      <p class="line3">CAMPUS BIRIGUI</p>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('logo-container').classList.add('animate-logo');
+      }, 2000); // após animação inicial terminar
+    });
+  </script>
+
+</body>
+</html>
